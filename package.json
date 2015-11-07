@@ -1,0 +1,29 @@
+{
+  "name": "league-wiki",
+  "version": "0.0.1",
+  "description": "League Wiki",
+  "main": "server.js",
+  "dependencies": {
+    "consolidate": "^0.13.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.47",
+    "request": "^2.65.0",
+    "router": "^1.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harrmalik/league-wiki.git"
+  },
+  "author": "Malik Harrison",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Harrmalik/league-wiki/issues"
+  },
+  "homepage": "https://github.com/Harrmalik/league-wiki#readme"
+}

@@ -1,0 +1,14 @@
+<html>
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>EJS, <%= name[0].stats.mp %>!</h1>
+  <% for(var i=0; i<name.length; i++) {%>
+   <li><%= name[i].stats.mp %></li>
+  <% } %>
+  <img src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg"/>
+  <img src="{{name}}"/>
+</body>
+</html>
