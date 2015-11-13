@@ -4,10 +4,13 @@
   "description": "League Wiki",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "consolidate": "^0.13.1",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
+    "jquery-zoom": "^1.7.14",
     "mongodb": "^2.0.47",
+    "path": "^0.12.7",
     "request": "^2.65.0",
     "router": "^1.1.3"
   },

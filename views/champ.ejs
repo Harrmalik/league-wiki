@@ -1,0 +1,81 @@
+<!doctype html>
+
+<html lang="en">
+   <head>
+     <meta charset="utf-8">
+
+     <title>League Wiki</title>
+     <meta name="description" content="The HTML5 Herald">
+     <meta name="author" content="SitePoint">
+
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css" rel="stylesheet" type="text/css" />
+     <link rel="stylesheet" href="/css/styles.css">
+
+     <!--[if lt IE 9]>
+     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+     <![endif]-->
+   </head>
+
+
+   <body>
+
+      <header>
+            <h1>League of Legends Wikipedia</h1>
+            <nav>
+               <a href="/">Home</a>
+               <a href="/champions">Champions</a>
+            </nav>
+      </header>
+<img src=<%= "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + data.key + "_0.jpg" %> class="splash" />
+      <section>
+         <article id="Info">
+            <h2><%= data.name %><br>
+            <small><%= data.title %></small></h2>
+            <span>
+               <% for(var i=0; i<data.tags.length; i++) { %>
+                  <%= data.tags[i] %>
+               <% } %>
+            </span>
+         </article>
+         <article id="Skins">
+            <h3>Skins</h3>
+            <div class="slider">
+               <div class="slide-viewer">
+                  <div class="slide-group">
+                     <% for(var i=0; i<data.skins.length; i++) { %>
+                        <!-- <div class="<%= 'slide slide-' + i %>" >
+                           <img src='<%= "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + data.key + "_" + i + ".jpg" %>' alt='<%= data.skins[i].name %>' />
+                        </div> -->
+                        <article class="<%= 'slide slide-' + i %>">
+                           <img src='<%= "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + data.key + "_" + i + ".jpg" %>' alt='<%= data.skins[i].name %>' />
+                           <span><%= data.skins[i].name %></span>
+                        </article>
+                     <% } %>
+                  </div>
+               </div>
+                <div class="slide-buttons"></div>
+               </div>
+
+         </article>
+         <article id="Skills">
+            <h3>Skills</h3>
+            <% for(var i=0; i<data.spells.length; i++) { %>
+               <div class="skills">
+                  <img src='<%= "http://ddragon.leagueoflegends.com/cdn/5.22.2/img/spell/" + data.spells[i].image.full %>'/>
+               </div>
+            <% } %>
+         </article>
+         <article id="Lore">
+            <h3>Lore</h3>
+            <p><%= data.lore %> </p>
+         </article>
+      </section>
+
+      <footer>
+
+      </footer>
+
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="/js/main.js" type="text/javascript"></script>
+   </body>
+</html>

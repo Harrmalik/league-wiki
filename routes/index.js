@@ -1,32 +1,40 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var key = "47609a87-00f8-4777-8084-5bd3f0dbace3";
+var key = require('../api-key.js');
 
 router.get('/', function(req, res){
-  request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=all&api_key=' + key, function (error, response, body) {
-    body = JSON.parse(body);
-    body = body.data;
-    var body = Object.keys(body).map(function(k) { return body[k] });
-    res.render('index', {'name': body});
-  });
+   res.render('index');
 });
+
+router.route('/champions')
+   .get(function(req, res){
+      request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=all&api_key=' + key, function (error, response, body) {
+        body = JSON.parse(body);
+        body = body.data;
+        var body = Object.keys(body).map(function(k) { return body[k] });
+        body.sort(function(a,b){
+         if (a.name < b.name)
+             return -1;
+         if (a.name > b.name)
+             return 1;
+         return 0;
+        });
+        res.render('champions', {'data': body});
+    });
+   });
+
+router.route('/champions/:champID')
+   .get(function(req, res){
+      request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + req.params.champID + '?champData=all&api_key=' + key, function (error, response, body) {
+         console.log(req.params.champID);
+        body = JSON.parse(body);
+        res.render('champ', {'data': body});
+      });
+   });
 
 router.get('/test', function (req, res) {
   request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=all&api_key=' + key, function (error, response, body) {
-      // if (!error && response.statusCode == 200) {
-      //     var obj = JSON.parse(body);
-      //
-      //     var stories = obj.data.children.map(function (story) { return story.data; });
-      //
-      //     db.collection('reddit').insert(stories, function (err, data) {
-      //             if(err) throw err;
-      //
-      //             console.dir(data);
-      //
-      //             db.close();
-      //     });
-      // }
       body = JSON.parse(body);
       body = body.data;
       var body = Object.keys(body).map(function(k) { return body[k] });
@@ -34,15 +42,8 @@ router.get('/test', function (req, res) {
   });
 });
 
-router.get('/aatrox', function (req, res) {
-  request('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg', function (error, response, body) {
-
-      res.render('index', {img: body});
-  });
-});
-
 router.get('*', function (req, res) {
-  res.send('Page Not FOund')
+  res.send('Page Not Found')
 });
 
 module.exports = router;

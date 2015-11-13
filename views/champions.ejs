@@ -10,7 +10,6 @@
 
      <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css" rel="stylesheet" type="text/css" />
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-     <script src="jquery.zoom.min.js"></script>
      <link rel="stylesheet" href="/css/styles.css">
 
      <!--[if lt IE 9]>
@@ -22,17 +21,23 @@
    <body>
       <header>
             <h1>League of Legends Wikipedia</h1>
-            <a href="/">Home</a>
-            <a href="/champions">Champions</a>
+            <nav>
+               <a href="/">Home</a>
+               <a href="/champions">Champions</a>
+            </nav>
       </header>
 
-      <section>
-         <p>Welcome</p>
-      </section>
+      <div>
+         <% for(var i=0; i<data.length; i++) { %>
+            <div class="cards darken">
+               <a href=<%= "/champions/" + data[i].id %> ><img class="" src=<%= "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + data[i].key + "_0.jpg" %> alt=<%= data[i].name %> /></a>
+               <span class="hidden"><%= data[i].name %></span>
+            </div>
+         <% } %>
+      </div>
 
       <footer>
-         <p>isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends.
-         League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.<p>
+
       </footer>
 
       <script src="/js/main.js" type="text/javascript"></script>
