@@ -4,7 +4,7 @@ body {
    margin: 0;
    padding: 0;
    /*background-color: #F1F1F1;*/
-   background: #000;
+   background: #F1F1F1;
    font-family: lato, sans-serif;
 }
 
@@ -12,7 +12,7 @@ header {
    background-color: #F1F1F1;
    margin: 0;
    margin-top: -.5em;
-   padding: 0;
+   padding: 1em;
    top: 0;
 }
 
@@ -26,10 +26,11 @@ header a {
 }
 
 section {
+   margin-top: 1em !important;
    width: 80%;
    max-width: 1366px;
    margin: auto;
-   background-color: #F1F1F1;
+   background-color: white;
    opacity: .9;
    box-shadow: 0 0 1em #666;
    -webkit-box-shadow: 0 0 1em #666;
@@ -37,6 +38,25 @@ section {
    -o-box-shadow: 0 0 1em #666;
    -ms-box-shadow: 0 0 1em #666;
    padding: 1em;
+}
+
+section#champPage {
+   margin-top:10em;
+}
+
+aside#left {
+   position: absolute;
+   top: 30%;
+   left: 0;
+   color: white;
+}
+
+aside#left a {
+   display: block;
+}
+
+aside#left a.active {
+   color: red;
 }
 
 div {
@@ -73,8 +93,13 @@ section img {
 
 .skills {
    width: 25%;
+   padding: 1em;
    float: left;
    text-align: center;
+}
+
+.skills img {
+   border-radius: 3em;
 }
 
 .slide-viewer {
@@ -118,6 +143,7 @@ section img {
   cursor: pointer;}
 
 div .cards span {
+   position:absolute;
    bottom: 0;
    left: 0;
    color: #24B7FF;
@@ -126,7 +152,6 @@ div .cards span {
    width: 100%;
    text-align: center;
    font-weight: 900;
-   // Browser Specific
    -webkit-filter: saturate(50%);
    -moz-filter: saturate(50%);
    -o-filter: saturate(50%);
@@ -152,12 +177,11 @@ box-shadow: 0 0 2em grey;
 
 }
 
-/*footer {
+footer {
    position: absolute;
    bottom: 0;
    color: #666;
    text-align: center;
    border-top: solid grey;
-   width: 50%;
    margin: auto;
-}*/
+}

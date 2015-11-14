@@ -2,16 +2,63 @@ $(document).ready(function () {
    // Creating hoveer effects on champions page
    var spans = $("span");
    $('.cards').hover(function(){
-      $(this).find(spans).fadeIn("slow").removeClass('hidden');
+      $(this).find(spans).stop( true, true ).fadeIn("slow").removeClass('hidden');
       $(this).fadeIn("slow").removeClass('darken');
    }, function(){
-      $(this).find(spans).fadeOut("slow").addClass('hidden');
+      $(this).find(spans).stop( true, true ).fadeOut("slow").addClass('hidden');
       $(this).addClass('darken');
    });
 
    // $('img').zoom();
+   
+   //Create sort functionality
+   var $imgs = $('.cards');
+   var $buttons = $('#buttons');
+   var tagged = {};
+   
+   $imgs.each(function() {
+     var img = this;
+     var tags = $(this).data('tags');
+     
+     if(tags) {
+       tags.split(',').forEach(function(tagName) {
+         if (tagged[tagName] == null) {
+           tagged[tagName] = [];
+         }
+         tagged[tagName].push(img);
+       });
+     }
+   });
 
 
+  $('<a/>', {
+    text: 'Show All',
+    class: 'active',
+    click: function() {
+      $(this)
+        .addClass('active')
+        .siblings()
+        .removeClass('active');
+      $imgs.show();
+    }
+  }).appendTo('aside#left');
+  
+  $.each(tagged, function(tagName){
+    $('<a/>', {
+      text: tagName + ' (' + tagged[tagName].length + ')',
+      click: function() {
+        $(this)
+          .addClass('active')
+          .siblings()
+          .removeClass('active');
+        $imgs
+          .hide()
+          .filter(tagged[tagName])
+          .show();
+      }
+    }).appendTo('aside#left'); 
+  });
+  
 });
 
 //Creating the slideshow on champs page

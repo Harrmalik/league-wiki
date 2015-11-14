@@ -21,20 +21,29 @@
    <body>
       <header>
             <h1>League of Legends Wikipedia</h1>
-            <nav>
-               <a href="/">Home</a>
-               <a href="/champions">Champions</a>
-            </nav>
+            <a href="/">Home</a>
+            <a href="/champions">Champions</a>
       </header>
-
+      
       <div>
+         <div id="buttons"></div>
          <% for(var i=0; i<data.length; i++) { %>
-            <div class="cards darken">
-               <a href=<%= "/champions/" + data[i].id %> ><img class="" src=<%= "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + data[i].key + "_0.jpg" %> alt=<%= data[i].name %> /></a>
+            <% tags = ''; %>
+            <% for(var j=0; j<data[i].tags.length; j++) { %>
+               <% tags += data[i].tags[j];  %>
+               <% if (j == 0 && data[i].tags.length != 1){
+                tags += ', '; }  %>
+            <% } %>
+            <div class="cards darken" data-tags="<%= tags %>">
+               <a href=<%= "/champions/" + data[i].id %> ><img class="" src=<%= "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + data[i].key + "_0.jpg" %>
+                  alt=<%= data[i].name %>  /></a>
                <span class="hidden"><%= data[i].name %></span>
             </div>
          <% } %>
       </div>
+      
+      <aside id="left">
+      </aside>
 
       <footer>
 

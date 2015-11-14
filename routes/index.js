@@ -38,7 +38,7 @@ router.get('/test', function (req, res) {
       body = JSON.parse(body);
       body = body.data;
       var body = Object.keys(body).map(function(k) { return body[k] });
-      res.send(body);
+      res.send(JSON.parse(body));
   });
 });
 
