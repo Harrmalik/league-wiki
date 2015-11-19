@@ -32,7 +32,7 @@
             <% for(var j=0; j<data[i].tags.length; j++) { %>
                <% tags += data[i].tags[j];  %>
                <% if (j == 0 && data[i].tags.length != 1){
-                tags += ', '; }  %>
+                tags += ','; }  %>
             <% } %>
             <div class="cards darken" data-tags="<%= tags %>">
                <a href=<%= "/champions/" + data[i].id %> ><img class="" src=<%= "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + data[i].key + "_0.jpg" %>

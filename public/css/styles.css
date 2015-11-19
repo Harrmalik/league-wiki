@@ -102,6 +102,11 @@ section img {
    border-radius: 3em;
 }
 
+#Lore {
+   clear: both !important;
+   display: block;
+}
+
 .slide-viewer {
    position: relative;
    overflow: hidden;
@@ -172,9 +177,8 @@ div .cards span {
    width: 100%;
    zoom: 100%;
    position: absolute;
-z-index: -1;
-box-shadow: 0 0 2em grey;
-
+   z-index: -1;
+   box-shadow: 0 0 2em grey;
 }
 
 footer {
