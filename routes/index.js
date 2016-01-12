@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var key = process.env.api-key;
+var key = process.env.API;
 
 router.get('/', function(req, res){
    res.render('index');
-   console.log("api_key" + key);
+   console.log("api_key " + key);
+   console.log("process.env.API " + process.env.API);
+   console.log("process.env.api-key " + process.env.api-key);
+   console.log("process.env " + process.env);
 });
 
 router.route('/champions')
