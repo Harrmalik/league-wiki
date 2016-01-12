@@ -5,6 +5,7 @@ var key = process.env.api-key;
 
 router.get('/', function(req, res){
    res.render('index');
+   console.log(key);
 });
 
 router.route('/champions')
