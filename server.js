@@ -17,9 +17,5 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
 
-MongoClient.connect('mongodb://localhost:27017/league');
-
-
-
 app.listen(8080);
 console.log("Express server started on port 8080");
