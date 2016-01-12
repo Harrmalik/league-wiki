@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var key = require('../api-key.js');
+var key = process.env.api-key;
 
 router.get('/', function(req, res){
    res.render('index');
