@@ -8,7 +8,6 @@ router.get('/', function(req, res){
    console.log("api_key " + key);
    console.log("process.env.API " + process.env.API);
    console.log("process.env.api-key " + process.env.api-key);
-   console.log("process.env " + process.env);
 });
 
 router.route('/champions')
