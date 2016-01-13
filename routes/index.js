@@ -2,17 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var key = process.env.API;
-
-router.get('/', function(req, res){
-   res.render('index');
-   console.log("api_key " + key);
-   console.log("process.env.API " + process.env.API);
-   console.log("process.env.api-key " + process.env.api-key);
-});
-
-router.route('/champions')
-   .get(function(req, res){
-      request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=all&api_key=' + key, function (error, response, body) {
+var champions = request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=all&api_key=' + key, function (error, response, body) {
         body = JSON.parse(body);
         body = body.data;
         var body = Object.keys(body).map(function(k) { return body[k] });
@@ -23,8 +13,17 @@ router.route('/champions')
              return 1;
          return 0;
         });
-        res.render('champions', {'data': body});
+      console.log(body);
+        return body;
     });
+
+router.get('/', function(req, res){
+   res.render('index');
+});
+
+router.route('/champions')
+   .get(function(req, res){
+      res.render('champions', {'data': champions});
    });
 
 router.route('/champions/:champID')
@@ -35,15 +34,6 @@ router.route('/champions/:champID')
         res.render('champ', {'data': body});
       });
    });
-
-router.get('/test', function (req, res) {
-  request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=all&api_key=' + key, function (error, response, body) {
-      body = JSON.parse(body);
-      body = body.data;
-      var body = Object.keys(body).map(function(k) { return body[k] });
-      res.send(JSON.parse(body));
-  });
-});
 
 router.get('*', function (req, res) {
   res.send('Page Not Found')
