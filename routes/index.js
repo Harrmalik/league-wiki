@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var key = process.env.API;
-var champions = request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=all&api_key=' + key, function (error, response, body) {
+var champions;
+request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=all&api_key=' + key, function (error, response, body) {
         body = JSON.parse(body);
         body = body.data;
         var body = Object.keys(body).map(function(k) { return body[k] });
@@ -13,9 +14,8 @@ var champions = request('https://global.api.pvp.net/api/lol/static-data/na/v1.2/
              return 1;
          return 0;
         });
-      console.log(body);
-        return body;
-    });
+        champions = body;
+});
 
 router.get('/', function(req, res){
    res.render('index');
